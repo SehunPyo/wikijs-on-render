@@ -5,7 +5,9 @@ services:
     plan: free
     repo: https://github.com/SehunPyo/wikijs-on-render
     branch: main
-    dockerCommand: docker-compose up
+    dockerCommand: docker compose up
+    dockerContext: .
+    autoDeploy: true
     buildFilter:
       paths:
         - docker-compose.yml
