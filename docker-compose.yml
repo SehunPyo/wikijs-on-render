@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  wiki:
+    image: requarks/wiki:latest
+    ports:
+      - "10000:3000"
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: wikidb
+      DB_PORT: 5432
+      DB_USER: wikiuser
+      DB_PASS: wikijs-pass
+      DB_NAME: wikijs
+    depends_on:
+      - wikidb
+
+  wikidb:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: wikijs
+      POSTGRES_USER: wikiuser
+      POSTGRES_PASSWORD: wikijs-pass
+    volumes:
+      - wikidb-data:/var/lib/postgresql/data
+
+volumes:
+  wikidb-data:
