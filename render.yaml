@@ -2,7 +2,10 @@ services:
   - type: web
     name: wiki-service
     env: docker
+    plan: free
     repo: https://github.com/SehunPyo/wikijs-on-render
     branch: main
-    plan: free
-    dockerCommand: docker compose up
+    dockerCommand: docker-compose up
+    buildFilter:
+      paths:
+        - docker-compose.yml
